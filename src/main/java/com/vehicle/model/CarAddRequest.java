@@ -1,11 +1,31 @@
 package com.vehicle.model;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "vehicle_data")
 public class CarAddRequest {
+    @Id
+    @Column(name = "vehicle_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer vehicleId;
+    @Column(name = "condition")
     private String condition;
-    private List<Details> details;
 
-    private List<Location> location;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "details_id")
+    private Details details;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id")
+    private Location location;
 
 }
