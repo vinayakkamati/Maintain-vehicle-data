@@ -34,5 +34,22 @@ public class VehicleDataController {
         }
     }
 
+    @PutMapping("/cars/{vehicleId}")
+    public ResponseEntity<?> updateCarDetails(@PathVariable("vehicleId")Integer vehicleId,
+                                              @RequestBody CarAddRequest request){
+        try {
+            CarAddRequest carAddRequest = vehicleService.getCarDetailsById(vehicleId);
+            request.setVehicleId(vehicleId);
+            request.getDetails().setDetailsId(carAddRequest.getDetails().getDetailsId());
+            request.getLocation().setLocationId(carAddRequest.getLocation().getLocationId());
+            request.getDetails().getManufacturer().setManufacturerId(carAddRequest.getDetails().getManufacturer().getManufacturerId());
+            return ResponseEntity.status(HttpStatus.OK).body(vehicleService.saveCarDetails(request));
+        }catch (InvalidRequestException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getLocalizedMessage());
+        }
+    }
+
 
 }

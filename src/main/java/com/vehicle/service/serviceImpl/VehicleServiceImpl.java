@@ -23,6 +23,6 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public CarAddRequest getCarDetailsById(Integer vehicleId) {
-         return Optional.of(vehicleRepository.findById(vehicleId)).get().orElseThrow(() -> new InvalidRequestException("Unable to find vehicle :" + vehicleId));
+         return Optional.of(vehicleRepository.findById(vehicleId)).get().orElseThrow(() -> new InvalidRequestException("Unable to find vehicle of vehicle id :" + vehicleId));
     }
 }
