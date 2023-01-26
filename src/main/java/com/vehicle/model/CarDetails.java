@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "vehicle_data")
-public class CarAddRequest {
+public class CarDetails {
     @Id
     @Column(name = "vehicle_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

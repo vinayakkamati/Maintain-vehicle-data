@@ -1,6 +1,6 @@
 package com.vehicle.service.serviceImpl;
 
-import com.vehicle.model.CarAddRequest;
+import com.vehicle.model.CarDetails;
 import com.vehicle.repository.VehicleRepository;
 import com.vehicle.service.VehicleService;
 import com.vehicle.service.exceptions.InvalidRequestException;
@@ -17,12 +17,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public CarAddRequest saveCarDetails(CarAddRequest request) {
+    public CarDetails saveCarDetails(CarDetails request) {
         return vehicleRepository.save(request);
     }
 
     @Override
-    public CarAddRequest getCarDetailsById(Integer vehicleId) {
+    public CarDetails getCarDetailsById(Integer vehicleId) {
          return Optional.of(vehicleRepository.findById(vehicleId)).get().orElseThrow(() -> new InvalidRequestException("Unable to find vehicle of vehicle id :" + vehicleId));
     }
 

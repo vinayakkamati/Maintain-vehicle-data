@@ -1,0 +1,26 @@
+{
+  "vehicleId": 7,
+  "condition": "USED",
+  "details": {
+    "detailsId": 5,
+    "body": "sedan",
+    "model": "Impala",
+    "manufacturer": {
+      "manufacturerId": 5,
+      "code": 101,
+      "name": "Chevrolet"
+    },
+    "numberOfDoors": 4,
+    "fuelType": "Gasoline",
+    "engine": "3.6L V6",
+    "mileage": 32280,
+    "modelYear": 2018,
+    "productionYear": 2018,
+    "externalColor": "white"
+  },
+  "location": {
+    "locationId": 8,
+    "lat": 40.73061,
+    "lon": -73.93524
+  }
+}

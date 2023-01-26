@@ -1,11 +1,11 @@
 package com.vehicle.service;
 
-import com.vehicle.model.CarAddRequest;
+import com.vehicle.model.CarDetails;
 
 public interface VehicleService {
-    CarAddRequest saveCarDetails(CarAddRequest request);
+    CarDetails saveCarDetails(CarDetails request);
 
-    CarAddRequest getCarDetailsById(Integer vehicleId);
+    CarDetails getCarDetailsById(Integer vehicleId);
 
     void deleteCarDetailsById(Integer vehicleId);
 }

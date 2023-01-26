@@ -1,6 +1,6 @@
 package com.vehicle.controller;
 
-import com.vehicle.model.CarAddRequest;
+import com.vehicle.model.CarDetails;
 import com.vehicle.service.VehicleService;
 import com.vehicle.service.exceptions.InvalidRequestException;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class VehicleDataController {
     }
 
     @PostMapping("/cars")
-    public ResponseEntity<?> addCar(@RequestBody CarAddRequest request){
+    public ResponseEntity<?> addCar(@RequestBody CarDetails request){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(vehicleService.saveCarDetails(request));
         }catch (Exception e){
@@ -36,13 +36,13 @@ public class VehicleDataController {
 
     @PutMapping("/cars/{vehicleId}")
     public ResponseEntity<?> updateCarDetails(@PathVariable("vehicleId") Integer vehicleId,
-                                              @RequestBody CarAddRequest request){
+                                              @RequestBody CarDetails request){
         try {
-            CarAddRequest carAddRequest = vehicleService.getCarDetailsById(vehicleId);
+            CarDetails carDetails = vehicleService.getCarDetailsById(vehicleId);
             request.setVehicleId(vehicleId);
-            request.getDetails().setDetailsId(carAddRequest.getDetails().getDetailsId());
-            request.getLocation().setLocationId(carAddRequest.getLocation().getLocationId());
-            request.getDetails().getManufacturer().setManufacturerId(carAddRequest.getDetails().getManufacturer().getManufacturerId());
+            request.getDetails().setDetailsId(carDetails.getDetails().getDetailsId());
+            request.getLocation().setLocationId(carDetails.getLocation().getLocationId());
+            request.getDetails().getManufacturer().setManufacturerId(carDetails.getDetails().getManufacturer().getManufacturerId());
             return ResponseEntity.status(HttpStatus.OK).body(vehicleService.saveCarDetails(request));
         }catch (InvalidRequestException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
