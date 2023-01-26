@@ -25,4 +25,9 @@ public class VehicleServiceImpl implements VehicleService {
     public CarAddRequest getCarDetailsById(Integer vehicleId) {
          return Optional.of(vehicleRepository.findById(vehicleId)).get().orElseThrow(() -> new InvalidRequestException("Unable to find vehicle of vehicle id :" + vehicleId));
     }
+
+    @Override
+    public void deleteCarDetailsById(Integer vehicleId) {
+            this.vehicleRepository.deleteById(vehicleId);
+    }
 }

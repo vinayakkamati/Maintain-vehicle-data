@@ -35,7 +35,7 @@ public class VehicleDataController {
     }
 
     @PutMapping("/cars/{vehicleId}")
-    public ResponseEntity<?> updateCarDetails(@PathVariable("vehicleId")Integer vehicleId,
+    public ResponseEntity<?> updateCarDetails(@PathVariable("vehicleId") Integer vehicleId,
                                               @RequestBody CarAddRequest request){
         try {
             CarAddRequest carAddRequest = vehicleService.getCarDetailsById(vehicleId);
@@ -48,6 +48,16 @@ public class VehicleDataController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getLocalizedMessage());
+        }
+    }
+
+    @DeleteMapping("/cars/{id}")
+    public ResponseEntity<?> deleteCarDetails(@PathVariable("id") Integer vehicleId){
+        try{
+            vehicleService.deleteCarDetailsById(vehicleId);
+            return ResponseEntity.status(HttpStatus.OK).body("Deleted car details successfully");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Vehicle Number " + vehicleId +" Does not exist");
         }
     }
 

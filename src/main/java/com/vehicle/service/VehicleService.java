@@ -6,4 +6,6 @@ public interface VehicleService {
     CarAddRequest saveCarDetails(CarAddRequest request);
 
     CarAddRequest getCarDetailsById(Integer vehicleId);
+
+    void deleteCarDetailsById(Integer vehicleId);
 }
