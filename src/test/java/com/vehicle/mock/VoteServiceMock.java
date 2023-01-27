@@ -1,7 +1,6 @@
 package com.vehicle.mock;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.vehicle.model.CarDetails;
@@ -10,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class VoteServiceMock {
-    ObjectMapper objectMapper = getObjectMapper();
     public static CarDetails getCarDetails() throws IOException {
         ObjectMapper objectMapper = getObjectMapper();
         CarDetails carDetails = objectMapper
